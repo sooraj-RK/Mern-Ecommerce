@@ -1,4 +1,29 @@
+import bcrypt from 'bcrypt';
+
+const password = 'myPassword123';
+
+// Generate a salt for the password hash
+const salt = bcrypt.genSaltSync(10);
+
+// Hash the password using the salt
+const hashedPassword = bcrypt.hashSync(password, salt);
+
 const data = {
+  users: [
+    {
+      name: 'sooraj',
+      email: 'sradmin@gmail.com',
+      password: bcrypt.hashSync('123456',salt),
+      isAdmin: true,
+    },
+    {
+      name: 'Elon',
+      email: 'elonuser@gmail.com',
+      password: bcrypt.hashSync('123456',salt),
+      isAdmin: false,
+    },
+  ],
+
   products: [
     {
       // _id:'1',
