@@ -26,6 +26,7 @@ app.use('/api/products',productRouter);
 app.use('/api/users',userRouter);
 
 app.use((err,req,res, next) =>{
+  console.error(err.stack);
   res.status(500).send({ message: err.message});
 })
 
