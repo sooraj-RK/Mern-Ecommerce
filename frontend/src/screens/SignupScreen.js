@@ -28,16 +28,11 @@ export default function SignupScreen() {
       toast.error('Passwords do not match');
       return;
     }
-    if (!name) { // check if name is empty
-      toast.error('Name is required');
-      return;
-    }
     try {
       const { data } = await Axios.post('/api/users/signup', {
         name,
         email,
         password,
-        confirmPassword,
       });
       ctxDispatch({ type: 'USER_SIGNIN', payload: data });
       localStorage.setItem('userInfo', JSON.stringify(data));
@@ -62,7 +57,7 @@ export default function SignupScreen() {
       <Form onSubmit={submitHandler}>
         <Form.Group className="mb-3" controlId="name">
           <Form.Label>Name</Form.Label>
-          <Form.Control type="text" value={name} onChange={(e) => setName(e.target.value)} required />
+          <Form.Control onChange={(e) => setName(e.target.value)} required />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="email">
