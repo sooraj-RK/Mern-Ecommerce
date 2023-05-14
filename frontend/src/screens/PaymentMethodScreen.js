@@ -12,11 +12,11 @@ export default function PaymentMethodScreen() {
 
     const {state,dispatch:ctxDispatch} = useContext(Store);
     const {
-        cart: {shippingAddress ,PaymentMethod},
+        cart: {shippingAddress ,paymentMethod},
     } = state;
 
-    const [paymentMethodName,setPaymentMethod] =useState(
-        PaymentMethod || 'PayPal'
+    const [paymentMethodName,setPaymentMethod] = useState(
+        paymentMethod || 'PayPal'
     );
     useEffect(()=>{
         if(!shippingAddress.address) {
